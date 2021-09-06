@@ -18,8 +18,10 @@ class Player(override val powerType: String,
 
     override fun attack(opponent: Fightable): Int {
         if (isBlessed) {
+            opponent.healthPoints -= damageRoll * 2;
             return damageRoll * 2;
         }
+        opponent.healthPoints -= damageRoll;
 
         return damageRoll;
     }
@@ -31,6 +33,7 @@ abstract class Monster(override val powerType: String,
                        val description: String) : Fightable {
 
     override fun attack(opponent: Fightable): Int {
+        opponent.healthPoints -= damageRoll;
 
         return damageRoll;
     }
